@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRETEST</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">PORTFOLIO</a>
+        </div>
+    </nav>
+
+<header class="hero">
+    <div class="container">
+        <img src="img/eli.png" alt="eli" class="name-img">
+        <h1>PROJECTS</h1>
+        <a href="./index.html" class="btn">Back to Home</a>
+    </div>
+</header>
+
+<!-- SLIDESHOW SECTION -->
+<section class="slider">
+    <div class="slider-wrapper">
+        <div class="slide"><img src="img/PROJ.png" alt="Slide 1"></div>
+        <div class="slide"><img src="img/PROJ2.png" alt="Slide 2"></div>
+        <div class="slide"><img src="img/PROJ3.png" alt="Slide 3"></div>
+        <div class="slide"><img src="img/PROJ4.png" alt="Slide 4"></div>
+        <div class="slide"><img src="img/PROJ5.png" alt="Slide 5"></div>
+        <div class="slide"><img src="img/PROJ6.png" alt="Slide 6"></div>
+        <div class="slide"><img src="img/PROJ7.png" alt="Slide 7"></div>
+    </div>
+    <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+    <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    <div class="dots-container">
+        <span class="dot" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+        <span class="dot" onclick="currentSlide(6)"></span>
+        <span class="dot" onclick="currentSlide(7)"></span>
+    </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact" class="contact">
+    <div class="container">
+        <h2>Contact Me</h2>
+        <p>If you'd like to work with me or just say hello, feel free to reach out!</p>
+        <a href="mailto:eliseodelcanoo@gmail.com" class="btn">Email Me</a>
+        <div class="social-links">
+            <a href="https://www.facebook.com/Zoroo.077/" target="_blank" class="social-btn">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/jhinma07/" target="_blank" class="social-btn">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+   <div class="container">
+       &copy; 2025 Eliseo Del Cano. All Rights Reserved.
+   </div>
+</footer>
+
+<!-- SLIDESHOW SCRIPT -->
+<script>
+    let currentIndex = 0;
+    const slides = document.querySelectorAll(".slide");
+    const dots = document.querySelectorAll(".dot");
+    const sliderWrapper = document.querySelector(".slider-wrapper");
+
+    function moveSlide(direction) {
+        currentIndex = (currentIndex + direction + slides.length) % slides.length;
+        updateSlider();
+    }
+
+    function currentSlide(index) {
+        currentIndex = index;
+        updateSlider();
+    }
+
+    function updateSlider() {
+        sliderWrapper.style.transform = `translateX(${-currentIndex * 100}%)`;
+        dots.forEach((dot, i) => dot.classList.toggle("active", i === currentIndex));
+    }
+
+    function autoSlide() {
+        moveSlide(1);
+    }
+
+    let slideInterval = setInterval(autoSlide, 3000);
+
+    document.querySelector(".slider").addEventListener("mouseenter", () => clearInterval(slideInterval));
+    document.querySelector(".slider").addEventListener("mouseleave", () => slideInterval = setInterval(autoSlide, 3000));
+
+    updateSlider();
+</script>
+
+<!-- SLIDESHOW STYLES -->
+<style>
+    /* SLIDER STYLING */
+    .slider {
+        position: relative;
+        max-width: 800px;
+        margin: 50px auto;
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    .slider-wrapper {
+        display: flex;
+        transition: transform 0.8s ease-in-out;
+    }
+    .slide {
+        min-width: 100%;
+    }
+    .slide img {
+        width: 100%;
+        display: block;
+        border-radius: 15px;
+    }
+
+    /* BUTTONS */
+    .prev, .next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.3);
+        color: rgb(60, 53, 53);
+        border: none;
+        padding: 15px;
+        cursor: pointer;
+        border-radius: 50%;
+        transition: 0.1s;
+        backdrop-filter: blur(10px);
+    }
+    .prev:hover, .next:hover {
+        background: rgba(255, 255, 255, 0.5);
+    }
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    /* DOTS */
+    .dots-container {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+    }
+    .dot {
+        width: 12px;
+        height: 12px;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: 0.1s;
+    }
+    .dot:hover, .dot.active {
+        background: rgb(169, 167, 167);
+        transform: scale(1.2);
+    }
+</style>
+
+</body>
+</html>

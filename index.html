@@ -1,0 +1,101 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliseo Del Cano - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">PORTFOLIO</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Header Section -->
+    <header class="hero">
+        <div class="container">
+            <img src="img/eli.png" alt="eli" class="name-img">
+            <h1>Hello, I'm <span class="fade-name">Eliseo Del Cano</span></h1>
+            <p>IT SUPPORT | UI/UX Designer | Web Designer</p>
+            <a href="https://drive.google.com/drive/folders/1n9srQPQUAXMcginunu0fO7vR6A4xbzHw?usp=sharing" target="_blank" class="btn">Download My CV</a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>I am a passionate developer with expertise in creating stunning websites, applications, and user experiences. In the future, I aspire to build mobile and PC games because I love gaming.</p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>My Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <img src="img/IT3.jpg" alt="Project 1">
+                    <div class="project-card-content">
+                        <h3>POST TEST AND PRE-TEST</h3>
+                        <a href="project1.html" class="btn">View Project</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="img/IT1.jpg" alt="Project 2">
+                    <div class="project-card-content">
+                        <h3>PROJECTS 2023-25</h3>
+                        <a href="project2.html" class="btn">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <p>If you'd like to work with me or just say hello, feel free to reach out!</p>
+            <a href="mailto:eliseodelcanoo@gmail.com" class="btn">Email Me</a>
+            <div class="social-links">
+                <a href="https://www.facebook.com/Zoroo.077/" target="_blank" class="social-btn">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/jhinma07/" target="_blank" class="social-btn">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            &copy; 2025 Eliseo Del Cano. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function () {
+                    navLinks.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
