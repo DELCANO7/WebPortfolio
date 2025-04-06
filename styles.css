@@ -302,7 +302,7 @@ body {
 /* Animations */
 @keyframes fadeInOut {
     0% { opacity: 0; }
-    50% { opacity: 1; }
+    50% { opacity: 2; }
     100% { opacity: 0; }
 }
 
