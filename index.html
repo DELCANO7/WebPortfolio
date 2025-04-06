@@ -140,6 +140,24 @@
         });
     </script>
 
+    <script>
+    const text = "IT SUPPORT | UI/UX Designer | Web Designer";
+    let index = 0;
+    const speed = 100; // typing speed
+
+    function typeWriter() {
+        if (index < text.length) {
+            document.querySelector('.hero p').innerHTML += text.charAt(index);
+            index++;
+            setTimeout(typeWriter, speed);
+        }
+    }
+
+    window.addEventListener('load', () => {
+        document.querySelector('.hero p').innerHTML = '';
+        typeWriter();
+    });
+</script>
     <style>
         .fade-in {
             opacity: 0;
