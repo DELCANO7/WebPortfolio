@@ -145,9 +145,9 @@
             });
         });
 
-        const nameText = "Eliseo Del Cano";  // Name to type
-let nameIndex = 0; // To keep track of the typing position
-const nameSpeed = 100; // Speed of typing
+        const nameText = "Eliseo Del Cano"; 
+let nameIndex = 0; 
+const nameSpeed = 100; 
 
 function typeName() {
     if (nameIndex < nameText.length) {
@@ -160,7 +160,7 @@ function typeName() {
 window.addEventListener('load', () => {
     document.querySelector('.fade-name span').innerHTML = '';
     typeName();
-    document.querySelector('.hero p').innerHTML = '';
+    document.querySelector('.header p').innerHTML = '';
     typeWriter();
 });
     </script>
@@ -172,72 +172,19 @@ window.addEventListener('load', () => {
 
     function typeWriter() {
         if (index === text.length) {
-            document.querySelector('.hero p').innerHTML = '';
+            document.querySelector('.header p').innerHTML = '';
             index = 0;
         }
         
-        document.querySelector('.hero p').innerHTML += text.charAt(index);
+        document.querySelector('.header p').innerHTML += text.charAt(index);
         index++;
         setTimeout(typeWriter, speed);
     }
 
     window.addEventListener('load', () => {
-        document.querySelector('.hero p').innerHTML = '';
+        document.querySelector('.header p').innerHTML = '';
         typeWriter(); 
     });
 </script>
-
-
-    <style>
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .menu-toggle.open i {
-            transform: rotate(90deg);
-            transition: transform 0.3s ease;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 60px;
-                right: 20px;
-                background: rgb(98, 11, 11);
-                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-                padding: 10px;
-                border-radius: 8px;
-                opacity: 0;
-                transform: translateY(-10px);
-                transition: opacity 0.3s ease, transform 0.3s ease;
-                pointer-events: none;
-            }
-            .nav-links.active {
-                opacity: 1;
-                transform: translateY(0);
-                pointer-events: auto;
-            }
-            .menu-toggle {
-                display: block;
-            }
-        }
-    </style>
 </body>
 </html>
