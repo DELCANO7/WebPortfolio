@@ -145,6 +145,25 @@
                 menuToggle.classList.toggle('open');
             });
         });
+
+        const nameText = "Eliseo Del Cano";  // Name to type
+let nameIndex = 0; // To keep track of the typing position
+const nameSpeed = 100; // Speed of typing
+
+function typeName() {
+    if (nameIndex < nameText.length) {
+        document.querySelector('.fade-name span').innerHTML += nameText.charAt(nameIndex);
+        nameIndex++;
+        setTimeout(typeName, nameSpeed);
+    }
+}
+
+window.addEventListener('load', () => {
+    document.querySelector('.fade-name span').innerHTML = '';
+    typeName();
+    document.querySelector('.hero p').innerHTML = '';
+    typeWriter();
+});
     </script>
 
     <script>
