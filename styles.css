@@ -91,8 +91,8 @@ body {
     color: #FFD700;
 }
 
-/* Hero Section */
-.hero {
+/* Header Section */
+.header {
     background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
     color: white;
     text-align: center;
@@ -107,7 +107,7 @@ body {
     border-bottom-right-radius: 50% 20%;
 }
 
-.hero img {
+.header img {
     width: 250px;
     height: 250px;
     border-radius: 50%;
@@ -115,23 +115,23 @@ body {
     margin-bottom: 20px;
 }
 
-.hero h1 {
+.header h1 {
     font-size: 2.8rem;
     font-weight: bold;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-.hero h1 span {
+.header h1 span {
     color: #FFD700;
     animation: fadeInOut 4s infinite ease-in-out;
 }
 
-.hero p {
+.header p {
     font-size: 1.2rem;
     font-weight: 500;
 }
 
-.hero .btn {
+.header .btn {
     margin-top: 20px;
 }
 
