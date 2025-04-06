@@ -91,9 +91,9 @@ body {
     color: #FFD700;
 }
 
-/* Hero Section */
+/* Header Section */
 .header {
-    background: linear-gradient(135deg, #1a2a6c, #2c1e70, #256dac);
+    background: linear-gradient(135deg, #1a2a6c,  #17103a, #256dac);
     color: white;
     text-align: center;
     padding: 100px 20px;
