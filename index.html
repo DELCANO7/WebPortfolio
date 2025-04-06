@@ -166,22 +166,25 @@ window.addEventListener('load', () => {
 });
     </script>
 
-    <script>
-    const text = "IT SUPPORT | UI/UX Designer | Web Designer";
+   <script>
+    const text = "IT SUPPORT | UI/UX Designer | Web Designer | Web Developer";
     let index = 0;
-    const speed = 100; // typing speed
+    const speed = 250;
 
     function typeWriter() {
-        if (index < text.length) {
-            document.querySelector('.hero p').innerHTML += text.charAt(index);
-            index++;
-            setTimeout(typeWriter, speed);
+        if (index === text.length) {
+            document.querySelector('.hero p').innerHTML = '';
+            index = 0;
         }
+        
+        document.querySelector('.hero p').innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeWriter, speed);
     }
 
     window.addEventListener('load', () => {
         document.querySelector('.hero p').innerHTML = '';
-        typeWriter();
+        typeWriter(); 
     });
 </script>
     <style>
