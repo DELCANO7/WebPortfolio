@@ -8,109 +8,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-    <style>
-      
-.header {
-    display: flex;
-    justify-content: center;  
-    align-items: center;     
-    height: 100vh;           
-    text-align: center;
-    background-color: #f8f8f8;  
-}
-
-/* Typing effect for the header */
-.header h1 {
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 2px solid #333;
-    animation: typing 3s steps(20, end) infinite alternate, blink 3.00s step-end infinite;
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: #decccc;
-}
-
-@keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-}
-
-@keyframes blink {
-    from, to { border-color: transparent; }
-    50% { border-color: #333; }
-}
-
-
-        .slider {
-            position: relative;
-            max-width: 800px;
-            margin: 50px auto;
-            overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-        .slider-wrapper {
-            display: flex;
-            transition: transform 0.8s ease-in-out;
-        }
-        .slide {
-            min-width: 100%;
-        }
-        .slide img {
-            width: 100%;
-            display: block;
-            border-radius: 15px;
-        }
-
-        .prev, .next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.3);
-            color: rgb(60, 53, 53);
-            border: none;
-            padding: 15px;
-            cursor: pointer;
-            border-radius: 50%;
-            transition: 0.1s;
-            backdrop-filter: blur(10px);
-        }
-
-        .prev:hover, .next:hover {
-            background: rgba(255, 255, 255, 0.5);
-        }
-
-        .prev { left: 10px; }
-        .next { right: 10px; }
-
-        .dots-container {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 8px;
-        }
-        .dot {
-            width: 12px;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: 0.1s;
-        }
-
-        .dot:hover, .dot.active {
-            background: rgb(169, 167, 167);
-            transform: scale(1.2);
-        }
-    </style>
+   
 </head>
 <body>
     
     <nav class="navbar">
         <div class="container">
-            <a href="#" class="logo">MyPORTFOLIO</a>
+            <a href="#" class="logo">My PORTFOLIO</a>
         </div>
     </nav>
 
@@ -203,5 +107,104 @@
 
         updateSlider();
     </script>
+ <style>
+
+/* Header centering */
+.header {
+display: flex;
+justify-content: center;  
+align-items: center;      
+height: 100vh;          
+text-align: center;
+background-color: #f8f8f8;  
+}
+
+/* Typing effect for the header */
+.header h1 {
+overflow: hidden;
+white-space: nowrap;
+border-right: 2px solid #333;
+animation: typing 3s steps(20, end) infinite alternate, blink 3.00s step-end infinite;
+font-size: 2.5rem;
+font-weight: 600;
+color: #decccc;
+}
+
+@keyframes typing {
+from { width: 0; }
+to { width: 100%; }
+}
+
+@keyframes blink {
+from, to { border-color: transparent; }
+50% { border-color: #333; }
+}
+
+
+    .slider {
+        position: relative;
+        max-width: 800px;
+        margin: 50px auto;
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    .slider-wrapper {
+        display: flex;
+        transition: transform 0.8s ease-in-out;
+    }
+    .slide {
+        min-width: 100%;
+    }
+    .slide img {
+        width: 100%;
+        display: block;
+        border-radius: 15px;
+    }
+
+    .prev, .next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.3);
+        color: rgb(60, 53, 53);
+        border: none;
+        padding: 15px;
+        cursor: pointer;
+        border-radius: 50%;
+        transition: 0.1s;
+        backdrop-filter: blur(10px);
+    }
+
+    .prev:hover, .next:hover {
+        background: rgba(255, 255, 255, 0.5);
+    }
+
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    .dots-container {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+    }
+    .dot {
+        width: 12px;
+        height: 12px;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: 0.1s;
+    }
+
+    .dot:hover, .dot.active {
+        background: rgb(169, 167, 167);
+        transform: scale(1.2);
+    }
+</style>
+
 </body>
 </html>
