@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PORTFOLIO</title>
+    <title>MyWebPortfolio</title>
     <link rel="icon" type="img/eli.png" href="img/eli.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
@@ -13,11 +13,12 @@
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="container">
-            <a href="#" class="logo">My PORTFOLIO</a>
+            <a href="#" class="logo">MyPORTFOLIO</a>
             <button class="menu-toggle"><i class="fas fa-bars"></i></button>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
                 <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -66,6 +67,54 @@
             </div>
         </div>
     </section>
+
+    <section id="skills" class="skills-section fade-in">
+
+        <h2 class="skills-title">Skills</h2>
+      
+        <div class="skill">
+          <div class="skill-info">
+            <span>HTML</span>
+            <span>90%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress" style="width: 90%;"></div>
+          </div>
+        </div>
+      
+        <div class="skill">
+          <div class="skill-info">
+            <span>CSS</span>
+            <span>85%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress" style="width: 85%;"></div>
+          </div>
+        </div>
+      
+        <div class="skill">
+          <div class="skill-info">
+            <span>JavaScript</span>
+            <span>60%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress" style="width: 60%;"></div>
+          </div>
+        </div>
+      
+        <div class="skill">
+          <div class="skill-info">
+            <span>PHP</span>
+            <span>70%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress" style="width: 70%;"></div>
+          </div>
+        </div>
+      
+      </section>
+      
+      
 
     <!-- Certifications Section -->
     <section id="certifications" class="certifications fade-in">
@@ -145,9 +194,9 @@
             });
         });
 
-        const nameText = "Eliseo Del Cano"; 
-let nameIndex = 0; 
-const nameSpeed = 100; 
+        const nameText = "Eliseo Del Cano";  // Name to type
+let nameIndex = 0; // To keep track of the typing position
+const nameSpeed = 100; // Speed of typing
 
 function typeName() {
     if (nameIndex < nameText.length) {
@@ -186,5 +235,26 @@ window.addEventListener('load', () => {
         typeWriter(); 
     });
 </script>
+
+<script>
+    // Animate Skills on Scroll
+    const skillSection = document.querySelector('.skills-section');
+    const progressBars = document.querySelectorAll('.progress');
+
+    const skillObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                progressBars.forEach(bar => {
+                    bar.style.width = bar.getAttribute('style').split(':')[1].trim();
+                });
+            }
+        });
+    }, {
+        threshold: 0.4
+    });
+
+    skillObserver.observe(skillSection);
+</script>
+
 </body>
 </html>
