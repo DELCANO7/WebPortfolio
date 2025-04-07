@@ -288,12 +288,12 @@ body {
 
 .exit-btn {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    background: #ff4b2b;
+    top: 7px;
+    right: 55px;
+    background: #3e318f;
     color: white;
     border: none;
-    border-radius: 50%;
+    border-radius: 100%;
     font-size: 1.5rem;
     padding: 10px;
     cursor: pointer;
