@@ -1,182 +1,346 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRETEST</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    
-    <nav class="navbar">
-        <div class="container">
-            <a href="#" class="logo">My PORTFOLIO</a>
-        </div>
-    </nav>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PRETEST</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <link rel="stylesheet" href="styles.css"/>
 
-<header class="header">
-    <div class="container">
-        <img src="img/eli.png" alt="eli" class="name-img">
-        <h1>POST TEST AND PRE-TEST</h1>
-        <a href="./index.html" class="btn">Back to Home</a>
-    </div>
-</header>
-
-<!-- SLIDESHOW SECTION -->
-<section class="slider">
-    <div class="slider-wrapper">
-        <div class="slide"><img src="img/PRETEST1.jpg" alt="Slide 1"></div>
-        <div class="slide"><img src="img/PRETEST2.jpg" alt="Slide 2"></div>
-        <div class="slide"><img src="img/PRETEST3.jpg" alt="Slide 3"></div>
-        <div class="slide"><img src="img/PRE7.png" alt="Slide 3"></div>
-        <div class="slide"><img src="img/PRET1.jpg" alt="Slide 4"></div>
-        <div class="slide"><img src="img/PRET2.jpg" alt="Slide 5"></div>
-        <div class="slide"><img src="img/PRET3.jpg" alt="Slide 6"></div>
-        <div class="slide"><img src="img/PRET4.jpg" alt="Slide 7"></div>
-        <div class="slide"><img src="img/PRET5.jpg" alt="Slide 8"></div>
-    </div>
-    <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
-    <button class="next" onclick="moveSlide(1)">&#10095;</button>
-    <div class="dots-container">
-        <span class="dot" onclick="currentSlide(0)"></span>
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-        <span class="dot" onclick="currentSlide(4)"></span>
-        <span class="dot" onclick="currentSlide(5)"></span>
-        <span class="dot" onclick="currentSlide(6)"></span>
-        <span class="dot" onclick="currentSlide(7)"></span>
-        <span class="dot" onclick="currentSlide(8)"></span>
-    </div>
-</section>
-
-<!-- CONTACT SECTION -->
-<section id="contact" class="contact">
-    <div class="container">
-        <h2>Contact Me</h2>
-        <p>If you'd like to work with me or just say hello, feel free to reach out!</p>
-        <a href="mailto:eliseodelcanoo@gmail.com" class="btn">Email Me</a>
-        <div class="social-links">
-            <a href="https://www.facebook.com/Zoroo.077/" target="_blank" class="social-btn">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://www.instagram.com/jhinma07/" target="_blank" class="social-btn">
-                <i class="fab fa-instagram"></i>
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-   <div class="container">
-       &copy; 2025 Eliseo Del Cano. All Rights Reserved.
-   </div>
-</footer>
-
-<!-- SLIDESHOW SCRIPT -->
-<script>
-    let currentIndex = 0;
-    const slides = document.querySelectorAll(".slide");
-    const dots = document.querySelectorAll(".dot");
-    const sliderWrapper = document.querySelector(".slider-wrapper");
-
-    function moveSlide(direction) {
-        currentIndex = (currentIndex + direction + slides.length) % slides.length;
-        updateSlider();
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #f2f6f9, #e0eafc);
+      color: #333;
+      margin: 0;
+      padding: 0;
     }
 
-    function currentSlide(index) {
-        currentIndex = index;
-        updateSlider();
+    .header h1.typing-text {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid #333;
+      animation: typing 3s steps(30, end) infinite alternate, blink 0.75s step-end infinite;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #decccc;
+      text-align: center;
+      margin-top: 20px;
     }
 
-    function updateSlider() {
-        sliderWrapper.style.transform = `translateX(${-currentIndex * 100}%)`;
-        dots.forEach((dot, i) => dot.classList.toggle("active", i === currentIndex));
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
     }
 
-    function autoSlide() {
-        moveSlide(1);
+    @keyframes blink {
+      from, to { border-color: transparent }
+      50% { border-color: #333 }
     }
 
-    let slideInterval = setInterval(autoSlide, 3000);
+    .header .btn,
+    .contact .btn {
+      background-color: #4a90e2;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 500;
+      transition: background 0.3s ease;
+      display: inline-block;
+      margin-top: 15px;
+    }
 
-    document.querySelector(".slider").addEventListener("mouseenter", () => clearInterval(slideInterval));
-    document.querySelector(".slider").addEventListener("mouseleave", () => slideInterval = setInterval(autoSlide, 3000));
+    .header .btn:hover,
+    .contact .btn:hover {
+      background-color: #357ABD;
+    }
 
-    updateSlider();
-</script>
+    .social-links a {
+      color: #f0f3f6;
+      font-size: 20px;
+      margin: 0 10px;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
 
-<!-- SLIDESHOW STYLES -->
-<style>
-    /* SLIDER STYLING */
+    .social-links a:hover {
+      transform: scale(1.2);
+      color: #357ABD;
+    }
+
+    /* SLIDER STYLES */
     .slider {
-        position: relative;
-        max-width: 800px;
-        margin: 50px auto;
-        overflow: hidden;
-        border-radius: 15px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    }
-    .slider-wrapper {
-        display: flex;
-        transition: transform 0.8s ease-in-out;
-    }
-    .slide {
-        min-width: 100%;
-    }
-    .slide img {
-        width: 100%;
-        display: block;
-        border-radius: 15px;
+      position: relative;
+      max-width: 800px;
+      margin: 50px auto;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     }
 
-    /* BUTTONS */
+    .slider-wrapper {
+      display: flex;
+      transition: transform 0.8s ease-in-out;
+    }
+
+    .slide {
+      min-width: 100%;
+    }
+
+    .slide img {
+      width: 100%;
+      display: block;
+      border-radius: 15px;
+    }
+
     .prev, .next {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(255, 255, 255, 0.3);
-        color: rgb(71, 65, 65);
-        border: none;
-        padding: 15px;
-        cursor: pointer;
-        border-radius: 50%;
-        transition: 0.1s;
-        backdrop-filter: blur(10px);
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.3);
+      color: rgb(71, 65, 65);
+      border: none;
+      padding: 15px;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: 0.1s;
+      backdrop-filter: blur(10px);
     }
+
     .prev:hover, .next:hover {
-        background: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.5);
     }
+
     .prev { left: 10px; }
     .next { right: 10px; }
 
-    /* DOTS */
     .dots-container {
-        position: absolute;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        gap: 8px;
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
     }
-    .dot {
-        width: 12px;
-        height: 12px;
-        background: rgba(255, 255, 255, 0.5);
-        border-radius: 50%;
-        cursor: pointer;
-        transition: 0.1s;
-    }
-    .dot:hover, .dot.active {
-        background: rgb(212, 208, 208);
-        transform: scale(0.8);
 
+    .dot {
+      width: 12px;
+      height: 12px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: 0.1s;
     }
-</style>
+
+    .dot:hover, .dot.active {
+      background: rgb(212, 208, 208);
+      transform: scale(0.8);
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+      .header h1.typing-text {
+        font-size: 1.8rem;
+      }
+
+      .prev, .next {
+        padding: 10px;
+      }
+
+      .social-links a {
+        font-size: 18px;
+        margin: 0 6px;
+      }
+
+      .header .btn,
+      .contact .btn {
+        padding: 8px 16px;
+        font-size: 14px;
+      }
+
+      .container {
+        padding: 0 15px;
+        text-align: center;
+      }
+
+      .name-img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header h1.typing-text {
+        font-size: 1.4rem;
+      }
+
+      .slider {
+        max-width: 100%;
+        margin: 20px auto;
+      }
+
+      .dots-container {
+        gap: 5px;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+      }
+
+      .prev, .next {
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="#" class="logo">My PORTFOLIO</a>
+    </div>
+  </nav>
+
+  <header class="header">
+    <div class="container">
+      <img src="img/eli.png" alt="eli" class="name-img" />
+      <h1 class="typing-text">POST TEST AND PRE-TEST</h1>
+      <a href="./index.html" class="btn">Back to Home</a>
+    </div>
+  </header>
+
+  <!-- PRETEST SLIDESHOW SECTION -->
+  <section class="slider" id="pretest-slider">
+    <div class="slider-wrapper">
+      <div class="slide"><img src="img/PRETEST1.jpg" alt="Pretest Slide 1" /></div>
+      <div class="slide"><img src="img/PRETEST2.jpg" alt="Pretest Slide 2" /></div>
+      <div class="slide"><img src="img/PRETEST3.jpg" alt="Pretest Slide 3" /></div>
+      <div class="slide"><img src="img/PRE7.png" alt="Pretest Slide 3" /></div>
+    </div>
+    <button class="prev" onclick="movePretestSlide(-1)">&#10094;</button>
+    <button class="next" onclick="movePretestSlide(1)">&#10095;</button>
+    <div class="dots-container">
+      <span class="dot" onclick="currentPretestSlide(0)"></span>
+      <span class="dot" onclick="currentPretestSlide(1)"></span>
+      <span class="dot" onclick="currentPretestSlide(2)"></span>
+      <span class="dot" onclick="currentPretestSlide(3)"></span>
+    </div>
+  </section>
+
+  <!-- EXISTING POSTTEST SLIDESHOW SECTION -->
+  <section class="slider" id="posttest-slider">
+    <div class="slider-wrapper">
+      <div class="slide"><img src="img/PRET1.jpg" alt="Posttest Slide 2" /></div>
+      <div class="slide"><img src="img/PRET2.jpg" alt="Posttest Slide 3" /></div>
+      <div class="slide"><img src="img/PRET3.jpg" alt="Posttest Slide 4" /></div>
+      <div class="slide"><img src="img/PRET4.jpg" alt="Posttest Slide 5" /></div>
+      <div class="slide"><img src="img/PRET5.jpg" alt="Posttest Slide 6" /></div>
+    </div>
+    <button class="prev" onclick="movePosttestSlide(-1)">&#10094;</button>
+    <button class="next" onclick="movePosttestSlide(1)">&#10095;</button>
+    <div class="dots-container">
+      <span class="dot" onclick="currentPosttestSlide(1)"></span>
+      <span class="dot" onclick="currentPosttestSlide(2)"></span>
+      <span class="dot" onclick="currentPosttestSlide(3)"></span>
+      <span class="dot" onclick="currentPosttestSlide(4)"></span>
+      <span class="dot" onclick="currentPosttestSlide(5)"></span>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Contact Me</h2>
+      <p>If you'd like to work with me or just say hello, feel free to reach out!</p>
+      <a href="mailto:eliseodelcanoo@gmail.com" class="btn">Email Me</a>
+      <div class="social-links">
+        <a href="https://www.facebook.com/Zoroo.077/" target="_blank" class="social-btn">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.instagram.com/jhinma07/" target="_blank" class="social-btn">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://github.com/DELCANO7" target="_blank" class="social-btn">
+            <i class="fab fa-github"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      &copy; 2025 Eliseo Del Cano. All Rights Reserved.
+    </div>
+  </footer>
+
+  <!-- SLIDESHOW SCRIPT -->
+  <script>
+    let currentPosttestIndex = 0;
+    const posttestSlides = document.querySelectorAll("#posttest-slider .slide");
+    const posttestDots = document.querySelectorAll("#posttest-slider .dot");
+    const posttestSliderWrapper = document.querySelector("#posttest-slider .slider-wrapper");
+
+    function movePosttestSlide(direction) {
+      currentPosttestIndex = (currentPosttestIndex + direction + posttestSlides.length) % posttestSlides.length;
+      updatePosttestSlider();
+    }
+
+    function currentPosttestSlide(index) {
+      currentPosttestIndex = index;
+      updatePosttestSlider();
+    }
+
+    function updatePosttestSlider() {
+      posttestSliderWrapper.style.transform = `translateX(${-currentPosttestIndex * 100}%)`;
+      posttestDots.forEach((dot, i) => dot.classList.toggle("active", i === currentPosttestIndex));
+    }
+
+    function autoPosttestSlide() {
+      movePosttestSlide(1);
+    }
+
+    let posttestSlideInterval = setInterval(autoPosttestSlide, 3000);
+
+    document.querySelector("#posttest-slider").addEventListener("mouseenter", () => clearInterval(posttestSlideInterval));
+    document.querySelector("#posttest-slider").addEventListener("mouseleave", () => posttestSlideInterval = setInterval(autoPosttestSlide, 3000));
+
+    updatePosttestSlider();
+
+    // PRETEST SLIDESHOW SCRIPT
+    let currentPretestIndex = 0;
+    const pretestSlides = document.querySelectorAll("#pretest-slider .slide");
+    const pretestDots = document.querySelectorAll("#pretest-slider .dot");
+    const pretestSliderWrapper = document.querySelector("#pretest-slider .slider-wrapper");
+
+    function movePretestSlide(direction) {
+      currentPretestIndex = (currentPretestIndex + direction + pretestSlides.length) % pretestSlides.length;
+      updatePretestSlider();
+    }
+
+    function currentPretestSlide(index) {
+      currentPretestIndex = index;
+      updatePretestSlider();
+    }
+
+    function updatePretestSlider() {
+      pretestSliderWrapper.style.transform = `translateX(${-currentPretestIndex * 100}%)`;
+      pretestDots.forEach((dot, i) => dot.classList.toggle("active", i === currentPretestIndex));
+    }
+
+    function autoPretestSlide() {
+      movePretestSlide(1);
+    }
+
+    let pretestSlideInterval = setInterval(autoPretestSlide, 3000);
+
+    document.querySelector("#pretest-slider").addEventListener("mouseenter", () => clearInterval(pretestSlideInterval));
+    document.querySelector("#pretest-slider").addEventListener("mouseleave", () => pretestSlideInterval = setInterval(autoPretestSlide, 3000));
+
+    updatePretestSlider();
+  </script>
 
 </body>
 </html>
