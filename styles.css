@@ -93,7 +93,7 @@ body {
 
 /* Header Section */
 .header {
-    background: linear-gradient(135deg, #1a2a6c,  #17103a, #256dac);
+    background: linear-gradient(135deg, #1a2a6c, #17103a, #256dac);
     color: white;
     text-align: center;
     padding: 100px 20px;
@@ -220,6 +220,49 @@ body {
     margin-bottom: 15px;
 }
 
+.skills-section {
+    padding: 4rem 2rem;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .skills-title {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 3rem;
+    color: #2c2c2c;
+    letter-spacing: 1px;
+  }
+  
+  .skill {
+    margin-bottom: 2rem;
+  }
+  
+  .skill-info {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #444;
+    font-size: 1.1rem;
+  }
+  
+  .progress-bar {
+    background: #eaeaea;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 10px;
+  }
+  
+  .progress {
+    height: 100%;
+    background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+    border-radius: 10px;
+    width: 0;
+    transition: width 2s ease-out;
+}
+
+  
 /* Contact Section */
 .contact {
     text-align: center;
