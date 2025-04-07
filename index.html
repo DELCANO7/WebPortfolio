@@ -69,52 +69,44 @@
     </section>
 
     <section id="skills" class="skills-section fade-in">
-
         <h2 class="skills-title">Skills</h2>
-      
         <div class="skill">
-          <div class="skill-info">
-            <span>HTML</span>
-            <span>90%</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress" style="width: 90%;"></div>
-          </div>
+            <div class="skill-info">
+                <span>HTML</span>
+                <span>90%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress" style="width: 90%;"></div>
+            </div>
         </div>
-      
         <div class="skill">
-          <div class="skill-info">
-            <span>CSS</span>
-            <span>85%</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress" style="width: 85%;"></div>
-          </div>
+            <div class="skill-info">
+                <span>CSS</span>
+                <span>85%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress" style="width: 85%;"></div>
+            </div>
         </div>
-      
         <div class="skill">
-          <div class="skill-info">
-            <span>JavaScript</span>
-            <span>60%</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress" style="width: 60%;"></div>
-          </div>
+            <div class="skill-info">
+                <span>JavaScript</span>
+                <span>60%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress" style="width: 60%;"></div>
+            </div>
         </div>
-      
         <div class="skill">
-          <div class="skill-info">
-            <span>PHP</span>
-            <span>70%</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress" style="width: 70%;"></div>
-          </div>
+            <div class="skill-info">
+                <span>PHP</span>
+                <span>70%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress" style="width: 70%;"></div>
+            </div>
         </div>
-      
-      </section>
-      
-      
+    </section>
 
     <!-- Certifications Section -->
     <section id="certifications" class="certifications fade-in">
@@ -122,8 +114,8 @@
             <h2>Certifications</h2>
             <div class="certification-grid">
                 <div class="Certifications-img">
-                    <img src="img/cisco.png" alt="Certification 1">
-                    <img src="img/CertificateAI.png" alt="CertificateAI">
+                    <img src="img/cisco.png" alt="Certification 1" class="cert-image">
+                    <img src="img/CertificateAI.png" alt="CertificateAI" class="cert-image">
                 </div>
             </div>
         </div>
@@ -160,7 +152,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             const fadeElements = document.querySelectorAll('.fade-in');
             const options = { threshold: 0.3 };
-            
+
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -168,7 +160,7 @@
                     }
                 });
             }, options);
-            
+
             fadeElements.forEach(element => {
                 observer.observe(element);
             });
@@ -187,74 +179,90 @@
             // Mobile Menu Toggle
             const menuToggle = document.querySelector('.menu-toggle');
             const navLinks = document.querySelector('.nav-links');
-            
+
             menuToggle.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
                 menuToggle.classList.toggle('open');
             });
         });
 
-        const nameText = "Eliseo Del Cano";  // Name to type
-let nameIndex = 0; // To keep track of the typing position
-const nameSpeed = 100; // Speed of typing
+        const nameText = "Eliseo Del Cano";
+        let nameIndex = 0;
+        const nameSpeed = 100;
 
-function typeName() {
-    if (nameIndex < nameText.length) {
-        document.querySelector('.fade-name span').innerHTML += nameText.charAt(nameIndex);
-        nameIndex++;
-        setTimeout(typeName, nameSpeed);
-    }
-}
-
-window.addEventListener('load', () => {
-    document.querySelector('.fade-name span').innerHTML = '';
-    typeName();
-    document.querySelector('.header p').innerHTML = '';
-    typeWriter();
-});
-    </script>
-
-<script>
-    const text = "IT SUPPORT | UI/UX Designer | Web Designer | Web Developer";
-    let index = 0;
-    const speed = 250;
-
-    function typeWriter() {
-        if (index === text.length) {
-            document.querySelector('.header p').innerHTML = '';
-            index = 0;
-        }
-        
-        document.querySelector('.header p').innerHTML += text.charAt(index);
-        index++;
-        setTimeout(typeWriter, speed);
-    }
-
-    window.addEventListener('load', () => {
-        document.querySelector('.header p').innerHTML = '';
-        typeWriter(); 
-    });
-</script>
-
-<script>
-    // Animate Skills on Scroll
-    const skillSection = document.querySelector('.skills-section');
-    const progressBars = document.querySelectorAll('.progress');
-
-    const skillObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                progressBars.forEach(bar => {
-                    bar.style.width = bar.getAttribute('style').split(':')[1].trim();
-                });
+        function typeName() {
+            if (nameIndex < nameText.length) {
+                document.querySelector('.fade-name span').innerHTML += nameText.charAt(nameIndex);
+                nameIndex++;
+                setTimeout(typeName, nameSpeed);
             }
+        }
+
+        window.addEventListener('load', () => {
+            document.querySelector('.fade-name span').innerHTML = '';
+            typeName();
+            document.querySelector('.header p').innerHTML = '';
+            typeWriter();
         });
-    }, {
-        threshold: 0.4
-    });
 
-    skillObserver.observe(skillSection);
-</script>
+        const text = "IT SUPPORT | UI/UX Designer | Web Designer | Web Developer";
+        let index = 0;
+        const speed = 250;
 
+        function typeWriter() {
+            if (index === text.length) {
+                document.querySelector('.header p').innerHTML = '';
+                index = 0;
+            }
+
+            document.querySelector('.header p').innerHTML += text.charAt(index);
+            index++;
+            setTimeout(typeWriter, speed);
+        }
+
+        window.addEventListener('load', () => {
+            document.querySelector('.header p').innerHTML = '';
+            typeWriter();
+        });
+
+        // Animate Skills on Scroll
+        const skillSection = document.querySelector('.skills-section');
+        const progressBars = document.querySelectorAll('.progress');
+
+        const skillObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    progressBars.forEach(bar => {
+                        bar.style.width = bar.getAttribute('style').split(':')[1].trim();
+                    });
+                }
+            });
+        }, {
+            threshold: 0.4
+        });
+
+        skillObserver.observe(skillSection);
+
+        // Zoom Image with Exit Button
+        const certImages = document.querySelectorAll('.cert-image');
+        certImages.forEach(image => {
+            image.addEventListener('click', function() {
+                const zoomedImage = document.createElement('div');
+                zoomedImage.classList.add('zoomed-image');
+                zoomedImage.innerHTML = `
+                    <div class="zoomed-container">
+                        <img src="${image.src}" alt="${image.alt}">
+                        <button class="exit-btn">X</button>
+                    </div>
+                `;
+                document.body.appendChild(zoomedImage);
+
+                const exitButton = zoomedImage.querySelector('.exit-btn');
+                exitButton.addEventListener('click', () => {
+                    zoomedImage.remove();
+                });
+            });
+        });
+    </script>
 </body>
 </html>
