@@ -262,6 +262,47 @@ body {
     transition: width 2s ease-out;
 }
 
+/* Zoomed-in image style */
+.zoomed-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.zoomed-container {
+    position: relative;
+}
+
+.zoomed-container img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.exit-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #ff4b2b;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.exit-btn:hover {
+    background: #ff416c;
+}
   
 /* Contact Section */
 .contact {
