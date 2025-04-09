@@ -256,7 +256,7 @@ body {
   
   .progress {
     height: 100%;
-    background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+    background: linear-gradient(90deg, #221e6d 0%, #5c93f1 100%);
     border-radius: 10px;
     width: 0;
     transition: width 2s ease-out;
@@ -394,6 +394,38 @@ body {
     box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* certfication frame to */
+.certification-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.Certifications-img {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.cert-image {
+    width: 300px;
+    height: auto;
+    border: 8px solid #ddd;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #fff;
+    padding: 10px;
+}
+
+.cert-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+}
+
 @media (max-width: 768px) {
     .certifications img {
         width: 100%;
@@ -448,4 +480,158 @@ body {
     .menu-toggle {
         display: block;
     }
+}
+
+
+/* bago to */
+
+/* Animation Keyframes */
+@keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes zoomIn {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Reusable fade-in effect */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+  }
+  
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Apply specific animations */
+  .header {
+    animation: fadeUp 1.2s ease-out;
+  }
+  
+  .about,
+  .skills-section,
+  .contact,
+  .certifications {
+    animation: fadeUp 2s ease-out;
+  }
+  
+  .project-card {
+    opacity: 0;
+    animation: scaleIn 1s ease forwards;
+    animation-delay: 0.2s;
+  }
+  
+  .project-card:nth-child(2) {
+    animation-delay: 0.4s;
+  }
+  
+  /* Navigation slide */
+  .navbar .logo {
+    animation: slideInLeft 1s ease-out;
+  }
+  
+  .navbar {
+    animation: slideInRight 1s ease-out;
+  }
+  
+  .name-img {
+    animation: zoomIn 4s ease-out;
+  }
+  
+
+  /* Style the zoomed certificate with frame */
+.zoomed-container img {
+    border: 8px solid #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+
+/* Style the zoomed container */
+.zoomed-container {
+    position: relative;
+    background-color: #fefefe;
+    padding: 20px;
+    border-radius: 20px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: auto;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Fix the X button position and style */
+.exit-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #2c2cd4;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    line-height: 18px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+}
+
+.exit-btn:hover {
+    background-color: #0fc7db;
 }
