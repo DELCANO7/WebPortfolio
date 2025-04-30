@@ -8,8 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
   <link rel="stylesheet" href="styles.css"/>
-
-  
 </head>
 <body>
 
@@ -33,7 +31,7 @@
       <div class="slide"><img src="img/PRETEST1.jpg" alt="Pretest Slide 1" /></div>
       <div class="slide"><img src="img/PRETEST2.jpg" alt="Pretest Slide 2" /></div>
       <div class="slide"><img src="img/PRETEST3.jpg" alt="Pretest Slide 3" /></div>
-      <div class="slide"><img src="img/PRE7.png" alt="Pretest Slide 3" /></div>
+      <div class="slide"><img src="img/PRE7.png" alt="Pretest Slide 4" /></div>
     </div>
     <button class="prev" onclick="movePretestSlide(-1)">&#10094;</button>
     <button class="next" onclick="movePretestSlide(1)">&#10095;</button>
@@ -45,23 +43,23 @@
     </div>
   </section>
 
-  <!-- EXISTING POSTTEST SLIDESHOW SECTION -->
+  <!-- POSTTEST SLIDESHOW SECTION -->
   <section class="slider" id="posttest-slider">
     <div class="slider-wrapper">
-      <div class="slide"><img src="img/PRET1.jpg" alt="Posttest Slide 2" /></div>
-      <div class="slide"><img src="img/PRET2.jpg" alt="Posttest Slide 3" /></div>
-      <div class="slide"><img src="img/PRET3.jpg" alt="Posttest Slide 4" /></div>
-      <div class="slide"><img src="img/PRET4.jpg" alt="Posttest Slide 5" /></div>
-      <div class="slide"><img src="img/PRET5.jpg" alt="Posttest Slide 6" /></div>
+      <div class="slide"><img src="img/PRET1.jpg" alt="Posttest Slide 1" /></div>
+      <div class="slide"><img src="img/PRET2.jpg" alt="Posttest Slide 2" /></div>
+      <div class="slide"><img src="img/PRET3.jpg" alt="Posttest Slide 3" /></div>
+      <div class="slide"><img src="img/PRET4.jpg" alt="Posttest Slide 4" /></div>
+      <div class="slide"><img src="img/PRET5.jpg" alt="Posttest Slide 5" /></div>
     </div>
     <button class="prev" onclick="movePosttestSlide(-1)">&#10094;</button>
     <button class="next" onclick="movePosttestSlide(1)">&#10095;</button>
     <div class="dots-container">
+      <span class="dot" onclick="currentPosttestSlide(0)"></span>
       <span class="dot" onclick="currentPosttestSlide(1)"></span>
       <span class="dot" onclick="currentPosttestSlide(2)"></span>
       <span class="dot" onclick="currentPosttestSlide(3)"></span>
       <span class="dot" onclick="currentPosttestSlide(4)"></span>
-      <span class="dot" onclick="currentPosttestSlide(5)"></span>
     </div>
   </section>
 
@@ -79,11 +77,11 @@
           <i class="fab fa-instagram"></i>
         </a>
         <a href="https://github.com/DELCANO7" target="_blank" class="social-btn">
-            <i class="fab fa-github"></i>
+          <i class="fab fa-github"></i>
         </a>
         <a href="https://www.linkedin.com/in/eliseo-del-cano-5a80a835b/" target="_blank" class="social-btn">
           <i class="fab fa-linkedin-in"></i>
-      </a>
+        </a>
       </div>
     </div>
   </section>
@@ -95,8 +93,14 @@
     </div>
   </footer>
 
-  <!-- SLIDESHOW SCRIPT -->
+  <!-- IMAGE MODAL -->
+  <div id="imgModal" class="modal">
+    <span class="modal-close">&times;</span>
+    <img class="modal-content" id="modalImg">
+  </div>
+
   <script>
+    // POSTTEST SLIDER
     let currentPosttestIndex = 0;
     const posttestSlides = document.querySelectorAll("#posttest-slider .slide");
     const posttestDots = document.querySelectorAll("#posttest-slider .dot");
@@ -126,9 +130,7 @@
     document.querySelector("#posttest-slider").addEventListener("mouseenter", () => clearInterval(posttestSlideInterval));
     document.querySelector("#posttest-slider").addEventListener("mouseleave", () => posttestSlideInterval = setInterval(autoPosttestSlide, 3000));
 
-    updatePosttestSlider();
-
-    // PRETEST SLIDESHOW SCRIPT
+    // PRETEST SLIDER
     let currentPretestIndex = 0;
     const pretestSlides = document.querySelectorAll("#pretest-slider .slide");
     const pretestDots = document.querySelectorAll("#pretest-slider .dot");
@@ -158,204 +160,417 @@
     document.querySelector("#pretest-slider").addEventListener("mouseenter", () => clearInterval(pretestSlideInterval));
     document.querySelector("#pretest-slider").addEventListener("mouseleave", () => pretestSlideInterval = setInterval(autoPretestSlide, 3000));
 
+    // IMAGE MODAL FUNCTIONALITY
+    const modal = document.getElementById("imgModal");
+    const modalImg = document.getElementById("modalImg");
+    const modalClose = document.querySelector(".modal-close");
+
+    // Add click event to all slider images
+    document.querySelectorAll('.slide img').forEach(img => {
+      img.addEventListener('click', function() {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        modalImg.alt = this.alt;
+      });
+    });
+
+    // Close modal when X is clicked
+    modalClose.onclick = function() {
+      modal.style.display = "none";
+    };
+
+    // Close modal when clicking outside the image
+    window.onclick = function(e) {
+      if (e.target == modal) {
+        modal.style.display = "none";
+      }
+    };
+
+    // Initialize sliders
+    updatePosttestSlider();
     updatePretestSlider();
   </script>
 
-<style>
-  body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to bottom right, #f2f6f9, #e0eafc);
-    color: #333;
-    margin: 0;
-    padding: 0;
-  }
-
-  .header h1.typing-text {
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 2px solid #333;
-    animation: typing 3s steps(30, end) infinite alternate, blink 0.75s step-end infinite;
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: #decccc;
-    text-align: center;
-    margin-top: 20px;
-  }
-
-  @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-  }
-
-  @keyframes blink {
-    from, to { border-color: transparent }
-    50% { border-color: #333 }
-  }
-
-  .header .btn,
-  .contact .btn {
-    background-color: #4a90e2;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 30px;
-    font-weight: 500;
-    transition: background 0.3s ease;
-    display: inline-block;
-    margin-top: 15px;
-  }
-
-  .header .btn:hover,
-  .contact .btn:hover {
-    background-color: #357ABD;
-  }
-
-  .social-links a {
-    color: #f0f3f6;
-    font-size: 20px;
-    margin: 0 10px;
-    transition: transform 0.3s ease, color 0.3s ease;
-  }
-
-  .social-links a:hover {
-    transform: scale(1.2);
-    color: #357ABD;
-  }
-
-  /* SLIDER STYLES */
-  .slider {
-    position: relative;
-    max-width: 800px;
-    margin: 50px auto;
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  }
-
-  .slider-wrapper {
-    display: flex;
-    transition: transform 0.8s ease-in-out;
-  }
-
-  .slide {
-    min-width: 100%;
-  }
-
-  .slide img {
-    width: 100%;
-    height: 390px; /* Fixed height */
-    object-fit: cover; /* Maintain good aspect ratio */
-    display: block;
-    border-radius: 15px;
-    opacity: 0; /* Start invisible */
-    animation: fadeIn 1s ease-in-out forwards; /* Fade in */
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  .prev, .next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.3);
-    color: rgb(71, 65, 65);
-    border: none;
-    padding: 15px;
-    cursor: pointer;
-    border-radius: 50%;
-    transition: 0.1s;
-    backdrop-filter: blur(10px);
-  }
-
-  .prev:hover, .next:hover {
-    background: rgba(255, 255, 255, 0.5);
-  }
-
-  .prev { left: 10px; }
-  .next { right: 10px; }
-
-  .dots-container {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 8px;
-  }
-
-  .dot {
-    width: 12px;
-    height: 12px;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: 0.1s;
-  }
-
-  .dot:hover, .dot.active {
-    background: rgb(212, 208, 208);
-    transform: scale(0.8);
-  }
-
-  /* RESPONSIVE DESIGN */
-  @media (max-width: 768px) {
-    .header h1.typing-text {
-      font-size: 1.8rem;
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #010a13 url('https://images.contentstack.io/v3/assets/blt187521ff0727be24/blt09e6769a9b674f2e/60ee0f2f1f3a6a0f3a9a8e7a/lol-background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #f0e6d2;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
     }
 
-    .prev, .next {
-      padding: 10px;
-    }
-
-    .social-links a {
-      font-size: 18px;
-      margin: 0 6px;
-    }
-
-    .header .btn,
-    .contact .btn {
-      padding: 8px 16px;
-      font-size: 14px;
+    .navbar {
+      background: linear-gradient(to right, #1e2328, #463714);
+      padding: 15px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+      border-bottom: 1px solid #785a28;
     }
 
     .container {
-      padding: 0 15px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .logo {
+      color: #c8aa6e;
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px rgba(200, 170, 110, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    .logo:hover {
+      color: #f0e6d2;
+      text-shadow: 0 0 15px rgba(200, 170, 110, 0.8);
+    }
+
+    .header {
       text-align: center;
+      padding: 60px 0;
+      background: rgba(1, 10, 19, 0.7);
+      margin: 20px auto;
+      max-width: 900px;
+      border-radius: 8px;
+      border: 1px solid #463714;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     }
 
     .name-img {
-      max-width: 100%;
-      height: auto;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 3px solid #785a28;
+      box-shadow: 0 0 20px rgba(200, 170, 110, 0.5);
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
     }
-  }
 
-  @media (max-width: 480px) {
+    .name-img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(200, 170, 110, 0.8);
+    }
+
     .header h1.typing-text {
-      font-size: 1.4rem;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid #c8aa6e;
+      animation: typing 3s steps(30, end) infinite alternate, blink 0.75s step-end infinite;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #f0e6d2;
+      text-align: center;
+      margin-top: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
 
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      from, to { border-color: transparent }
+      50% { border-color: #c8aa6e }
+    }
+
+    .btn {
+      background: linear-gradient(to right, #785a28, #c8aa6e);
+      color: #1e2328;
+      padding: 12px 30px;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      display: inline-block;
+      margin-top: 20px;
+      border: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn:hover {
+      background: linear-gradient(to right, #c8aa6e, #f0e6d2);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    /* SLIDER STYLES */
     .slider {
-      max-width: 100%;
-      margin: 20px auto;
+      position: relative;
+      max-width: 800px;
+      margin: 50px auto;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      border: 2px solid #785a28;
     }
 
-    .dots-container {
-      gap: 5px;
+    .slider-wrapper {
+      display: flex;
+      transition: transform 0.8s ease-in-out;
     }
 
-    .dot {
-      width: 10px;
-      height: 10px;
+    .slide {
+      min-width: 100%;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 390px;
+      object-fit: cover;
+      display: block;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out forwards;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .slide img:hover {
+      transform: scale(1.02);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     .prev, .next {
-      padding: 8px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(30, 35, 40, 0.7);
+      color: #c8aa6e;
+      border: 1px solid #785a28;
+      padding: 15px;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      font-weight: bold;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(5px);
     }
-  }
-</style>
 
+    .prev:hover, .next:hover {
+      background: rgba(120, 90, 40, 0.7);
+      color: #f0e6d2;
+    }
+
+    .prev { left: 15px; }
+    .next { right: 15px; }
+
+    .dots-container {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      background: rgba(200, 170, 110, 0.5);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1px solid #1e2328;
+    }
+
+    .dot:hover, .dot.active {
+      background: #c8aa6e;
+      transform: scale(1.2);
+    }
+
+    /* CONTACT SECTION */
+    .contact {
+      padding: 60px 0;
+      text-align: center;
+      background: rgba(1, 10, 19, 0.8);
+      margin-top: 50px;
+      border-top: 1px solid #785a28;
+      border-bottom: 1px solid #785a28;
+    }
+
+    .contact h2 {
+      color: #c8aa6e;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .contact p {
+      max-width: 600px;
+      margin: 0 auto 30px;
+      line-height: 1.6;
+    }
+
+    .social-links {
+      margin-top: 30px;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: #1e2328;
+      border-radius: 50%;
+      margin: 0 10px;
+      color: #c8aa6e;
+      border: 1px solid #785a28;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .social-btn:hover {
+      transform: translateY(-5px) scale(1.1);
+      color: #f0e6d2;
+      background: #785a28;
+      box-shadow: 0 6px 12px rgba(200, 170, 110, 0.4);
+    }
+
+    /* FOOTER */
+    .footer {
+      background: linear-gradient(to right, #1e2328, #463714);
+      padding: 20px 0;
+      text-align: center;
+      color: #c8aa6e;
+      font-size: 0.9rem;
+      border-top: 1px solid #785a28;
+    }
+
+    /* MODAL STYLES */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(1, 10, 19, 0.95);
+      backdrop-filter: blur(5px);
+    }
+
+    .modal-content {
+      margin: auto;
+      display: block;
+      width: 90%;
+      max-width: 800px;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 8px;
+      border: 2px solid #c8aa6e;
+      box-shadow: 0 0 30px rgba(200, 170, 110, 0.5);
+      animation: zoom 0.3s ease;
+    }
+
+    @keyframes zoom {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #c8aa6e;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-close:hover {
+      color: #f0e6d2;
+      transform: scale(1.1);
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+      .header h1.typing-text {
+        font-size: 1.8rem;
+      }
+
+      .prev, .next {
+        padding: 10px;
+        width: 35px;
+        height: 35px;
+      }
+
+      .social-links a {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+      }
+
+      .header .btn,
+      .contact .btn {
+        padding: 10px 25px;
+        font-size: 14px;
+      }
+
+      .name-img {
+        width: 120px;
+        height: 120px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header h1.typing-text {
+        font-size: 1.4rem;
+        white-space: normal;
+        border-right: none;
+        animation: none;
+      }
+
+      .slider {
+        max-width: 100%;
+        margin: 30px auto;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+      }
+
+      .dots-container {
+        gap: 8px;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+      }
+
+      .prev, .next {
+        padding: 8px;
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+      }
+
+      .contact h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </body>
 </html>
